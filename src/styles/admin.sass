@@ -1,0 +1,315 @@
+#dAdminBody
+    padding: 0 !important
+    min-height: 100vh
+
+    #mAviso
+        position: absolute
+        top: 0
+        color: white
+        padding-top: 10px
+
+        z-index: 5
+
+        img
+            height: 25px
+            margin-top: -8px
+
+        span
+            background-color: #000000c5
+
+    #dCMS
+        position: relative
+
+        flex: 1
+
+        height: fit-content
+        
+        #dTablas
+            display: flex
+            flex-direction: column
+
+            position: absolute
+            overflow: hidden
+
+            margin-left: 0.5rem
+            top: 38%
+            -ms-transform: translateY(-50%)
+            transform: translateY(-50%)
+            max-width: 350px
+
+            padding: 6px !important
+            padding-bottom: 8px !important
+            background-color: #000000 !important
+            border-color: #BA8B02 !important
+
+            @media screen and (max-width: 1800px)
+                position: static
+                display: block
+                margin-left: auto
+                margin-right: auto
+
+                margin-top: 15rem !important
+                margin-bottom: -10rem !important
+
+                width: 1000px
+                max-width: none
+            
+            @media screen and (max-width: 1100px)
+                max-width: 800px !important
+
+            @media screen and (max-width: 900px)
+                max-width: 700px !important
+
+            @media screen and (max-width: 800px)
+                max-width: 600px !important
+
+            @media screen and (max-width: 700px)
+                max-width: 500px !important
+
+            @media screen and (max-width: 600px)
+                max-width: 420px !important
+
+            .ui-state-active
+                background-color: #000000 !important
+                border-color: #8e8e8e
+                border-bottom: none
+
+            .ui-accordion-content
+                margin-top: -8px !important
+                
+                &:not(:last-child)
+                    margin-bottom: 8px !important
+
+                .dTabs
+                    ul
+                        padding: 0
+                        list-style: none
+                        li
+                            padding-top: 10px !important
+
+                            a
+                                text-decoration: none
+
+                                &:hover
+                                    color: #BA8B02
+
+        .showTable
+
+            max-width: 1000px !important
+            padding-top: 1rem !important
+
+            @media screen and (max-width: 1100px)
+                max-width: 800px !important
+
+            @media screen and (max-width: 900px)
+                max-width: 700px !important
+
+            @media screen and (max-width: 800px)
+                max-width: 600px !important
+
+            @media screen and (max-width: 700px)
+                max-width: 500px !important
+
+            @media screen and (max-width: 600px)
+                max-width: 420px !important
+
+            .MuiPaper-root
+                border: 2.5px solid #929292
+
+                .tss-1fz5efq-MUIDataTableToolbar-left
+
+                    display: flex
+                    position: absolute
+                    left: 0
+                    right: 0
+                    margin-left: auto
+                    margin-right: auto
+                    width: fit-content
+
+                    h6
+                        font-size: 35px
+
+                    .tss-1ufdzki-MUIDataTableSearch-main
+                        ::after
+                            border-bottom: 2px solid #BA8B02 !important
+
+                .tss-qbo1l6-MUIDataTableToolbar-actions
+
+                    .css-78trlr-MuiButtonBase-root-MuiIconButton-root
+                        &:hover
+                            color: #BA8B02 !important
+                    .tss-9z1tfs-MUIDataTableToolbar-iconActive
+                        color: #BA8B02 !important
+
+                .tss-1cdcmys-MUIDataTable-responsiveBase
+                    //scrollbar-color: #BA8B02 whitesmoke
+
+                table
+                    thead
+                        th
+                            padding-top: 32px
+                            padding-bottom: 0
+
+                            button
+                                font-size: 12px
+                                text-align: center
+                                background-color: #BA8B02 !important
+                                margin: 0
+                                top: 50%
+                                left: 50%
+                                -ms-transform: translate(-50%, -50%)
+                                transform: translate(-50%, -50%)
+
+                                .tss-bd2lw8-MUIDataTableHeadCell-sortActive
+                                    color: white
+                                svg
+                                    color: white
+                    tbody
+                        tr
+                            height: 102px
+
+                            td
+                                font-size: 12px
+
+                                .tss-1qtl85h-MUIDataTableBodyCell-root
+                                    text-align: center
+                                
+                                .dImgTabla
+                                    display: block
+                                    margin-left: auto
+                                    margin-right: auto
+
+                    tfoot
+                        tr
+                            td
+                                .MuiTablePagination-selectLabel
+                                    padding-top: 15px !important
+
+                                .MuiTablePagination-displayedRows
+                                    padding-top: 15px !important
+        #dShowBackImage
+            height: 750px
+            padding: 0 !important
+
+            @media screen and (max-width: 1100px)
+                height: 600px
+
+            @media screen and (max-width: 900px)
+                height: 500px
+
+            @media screen and (max-width: 800px)
+                height: 400px
+
+            @media screen and (max-width: 700px)
+                height: 300px
+
+            @media screen and (max-width: 600px)
+                height: 200px
+
+            #dBackImage
+                height: 50%
+                width: 50%
+
+                background-image: url("../imagenes/juanquer.gif")
+                background-repeat: no-repeat
+                background-position: center
+
+                opacity: 0.15
+                
+                -webkit-border-radius: 50%
+                -moz-border-radius: 50%
+                border-radius: 50%
+
+                border: 1px solid #ffffff4d
+                overflow: hidden
+
+                @media screen and (max-width: 1100px)
+                    background-size: 500px 500px
+
+                @media screen and (max-width: 900px)
+                    background-size: 400px 400px
+
+                @media screen and (max-width: 800px)
+                    background-size: 300px 300px
+
+                @media screen and (max-width: 700px)
+                    background-size: 260px 260px
+
+                @media screen and (max-width: 600px)
+                    background-size: 210px 210px
+
+
+        .formsAPI
+
+            .container
+                max-width: 1000px
+
+                @media screen and (max-width: 1100px)
+                    max-width: 800px !important
+
+                @media screen and (max-width: 900px)
+                    max-width: 700px !important
+
+                @media screen and (max-width: 800px)
+                    max-width: 600px !important
+
+                @media screen and (max-width: 700px)
+                    max-width: 500px !important
+
+                @media screen and (max-width: 600px)
+                    max-width: 420px !important
+
+                background-color: #000000 !important
+                border-color: #BA8B02 !important
+
+                .formEdit
+                    width: 100%
+                    display: flex !important
+                    flex-direction: row !important
+                    flex-wrap: wrap !important
+                    padding-top: 10px !important
+
+                .dDataInput
+                    width: 50%
+
+                    @media screen and (max-width: 800px)
+                        width: 100%
+
+                    p
+                        color: white
+
+                    label
+                        color: white
+                        margin-top: 5px
+
+                    input[type="file"]
+                        color: white
+
+                    input
+                        width: fit-content
+                        margin-top: 8px
+
+                .dDataInputBtn
+                    width: 100%
+                    padding-top: 10px !important
+                    padding-bottom: 10px !important
+
+            .dDeleteData
+                padding-top: 10px !important
+
+                .dDataInput
+                    width: 100%
+
+                .dDataInputBtn
+                    margin-top: 10px
+
+    .formularios.container-fluid
+        margin-bottom: 5px
+
+.MuiModal-root 
+    .MuiPaper-root
+        .tss-ynxllk-MUIDataTableFilter-root
+            .tss-1wwzodd-MUIDataTableFilter-header
+                .tss-14ngk2z-MUIDataTableFilter-reset
+                    .MuiButton-root
+                        background-color: #BA8B02 !important

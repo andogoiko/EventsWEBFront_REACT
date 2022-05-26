@@ -1,0 +1,88 @@
+.navbar 
+  position: relative !important
+
+  height: 150px
+
+  display: flex
+  justify-content: flex-end !important
+
+  background: rgba(30, 21, 31, 0)
+  color: white
+
+  font-family: Helvetica
+  font-weight: 300
+
+  z-index: 1 !important
+
+  border-bottom: 1px solid transparent 
+  border-image: linear-gradient(90deg, red , yellow)
+  border-image-slice: 1
+
+  @media screen and (max-width: 800px)
+    justify-content: space-between !important
+
+  .home-logo
+    position: absolute
+    margin-top: 0 !important
+    left: 0
+
+    @media screen and (max-width: 800px)
+      display: none
+
+  .navbar__logo
+    position: absolute
+
+    width: fit-content
+
+    left: 0
+    right: 0
+    margin-top: 10px
+    margin-left: auto
+    margin-right: auto
+
+    height: 90%
+
+    .logo-eventum
+      cursor: pointer
+
+      max-height: 125px !important
+
+  .navbar__title 
+    margin-right: auto
+    font-size: 150%
+    padding: 12px 16px
+
+    a
+      margin-right: auto
+      font-size: 150%
+      padding: 12px 16px
+      color: #ffc107 
+      text-decoration: none
+
+
+
+  .navbar__item 
+    padding: 16px 16px
+    margin: 30px 0 0 0
+    
+    cursor: pointer
+    vertical-align: middle
+  
+    h2 
+      a
+        color:white
+        text-decoration: none
+
+    button 
+      a
+        color: white
+        text-decoration: none
+      
+    .bienvenidoUsuario
+      a 
+        color: #ffc107 
+    
+    @media screen and (max-width: 1000px)
+
+      margin: 45px 0 0 0
+

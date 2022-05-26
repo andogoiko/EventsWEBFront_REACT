@@ -1,0 +1,198 @@
+.hype-container
+    position: fixed
+
+    transform: translate3d(0%, -50%, 0px)
+
+    top: 50%
+    right: 0
+
+    margin-right: -2px
+
+    padding: 5px 0 5px 3px
+
+    width: fit-content
+
+    background-color: black
+
+    border-top-left-radius: 10px
+    border-bottom-left-radius: 10px
+
+    z-index: 99999
+
+    &:before 
+        content: ""
+
+        position: absolute
+        z-index: -1
+
+        inset: 0
+
+        padding: 2px
+
+        border-top-left-radius: 8px
+        border-bottom-left-radius: 8px
+
+        background: linear-gradient(110deg, white , #ffc107)
+
+        -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0)
+        mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0)
+        -webkit-mask-composite: xor
+        mask-composite: exclude
+
+    .hype
+        cursor: pointer
+
+        height: 50px 
+    
+.container-evento
+    display: flex
+    flex-wrap: wrap
+    justify-content: center
+    align-items: center
+
+    padding-left: 0.6%
+    margin-top: 60px
+    margin-bottom: 60px
+
+    border: 2px solid white
+    border-radius: 2px
+    
+    color: white
+    
+    .cabecera-evento
+        width: 100%
+        height: 20%
+        background: linear-gradient(to right, #434343, #979292)
+        display: flex
+        flex-wrap: wrap
+        justify-content: center
+
+        #fondo-evento
+
+            display: flex
+
+            width: 100%!important
+            max-height: 600px
+            height: 600px
+
+            background-size: cover
+        
+            background-color: white
+
+            .dFilter
+                position: relative
+
+                display: flex
+
+                width: 100%!important
+                height: 100%
+
+                background-color: #00000038
+                -webkit-backdrop-filter: blur(0.5rem)
+                -moz-backdrop-filter: blur(0.5rem)
+                backdrop-filter: blur(0.5rem)
+
+                .dLittleImage
+
+                    height: fit-content
+                    width: fit-content
+
+                    margin-top: 8%
+                    margin-left: 8%
+
+                    border: 0.5px solid #0000008b
+                    border-radius: 8px
+                    box-shadow: 1px 1px 1px 1px #00000068
+
+                    @media screen and (max-width: 768px)
+                        margin-top: 16%
+                        margin-left: auto
+                        margin-right: auto
+
+                    img
+                        height: 150px
+                        width: 266px
+                        border-radius: 8px
+
+                .dFade
+                    position: absolute
+
+                    height: 100%
+                    width: 100%
+
+                    .absolute-info
+
+                        display: flex
+                        flex-wrap: wrap
+
+                        margin-top: auto
+
+                        padding: 0 !important
+
+                        width: 100%
+
+                        .dBasicInfo
+                            width: 100%
+
+                            background: linear-gradient(360deg, #000000d0, transparent)
+
+                            .dDataEvent
+
+                                h1
+                                    width: fit-content
+
+                                    margin-left: 8%
+
+                                    padding: 0
+
+                                    text-decoration: none
+
+                                    @media screen and (max-width: 768px)
+                                        margin-left: auto
+                                        margin-right: auto
+
+                                span
+                                    width: fit-content
+
+                                    margin-left: 10%
+
+                                    padding: 0 0 85.8px 0
+
+                                    @media screen and (max-width: 768px)
+                                        margin-left: auto
+                                        margin-right: auto
+
+
+                        .dDisponibilidad
+                            width: 100%
+
+                            padding: 0
+                            margin: 0
+
+                            padding-right: 16%
+
+                            background: linear-gradient(360deg, black, #000000d0)
+
+                            @media screen and (max-width: 768px)
+                                justify-content: center !important
+
+                                padding: 0
+
+                            .cuadrado-info
+                                width: 100px
+                                height: 6rem
+                                padding-top: 2%
+        #btn-inscribir
+            margin-top: 50px
+            
+    .body-details
+        background:  linear-gradient(to right, #434343, #979292)
+        width: 100%
+        padding: 3%
+
+        padding-top: 0
+
+        .container
+            border-bottom-left-radius: 5px
+            border-bottom-right-radius: 5px
+
