@@ -82,6 +82,8 @@ function CuerpoPerfil() {
 
             <NavTabs />
             <DatosUsuario tablaData={user} setTablaData={setUser} />
+
+            <hr />
           </div>
 
           

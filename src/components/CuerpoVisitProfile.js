@@ -45,6 +45,8 @@ function CuerpoVisitProfile() {
 
         <NavTabsVisitUser tablaData={user} setTablaData={setUser}/>
 
+        <hr />
+
       </div>
 
 

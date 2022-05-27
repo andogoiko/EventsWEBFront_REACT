@@ -34,17 +34,20 @@ function Home() {
 
   }
 
-  //Hype data
-  
+  // cogemos solo los eventos activos
+  // filtramos los conciertos que estén activos mediante la filtración de la propiedad fecha_inic del objeto del array
+
   let activeEvents = eventos.filter(({ fecha_inic }) => new Date(+(fecha_inic.split("/"))[2], (fecha_inic.split("/"))[1] - 1, +(fecha_inic.split("/"))[0]) > new Date());
 
-  let orderHypeados = activeEvents.sort((a, b) => (b.popularidad > a.popularidad) ? 1 : -1);
+  //Hype data
+
+  let orderHypeados = activeEvents.sort((a, b) => b.popularidad > a.popularidad);
 
   let masHypeados = orderHypeados.slice(0, 8);
 
   // Newest data
 
-  let OrderNewestEvents = eventos.sort(function (a, b) {
+  let OrderNewestEvents = activeEvents.sort(function (a, b) {
 
     //transformando formato (source) -> https://stackoverflow.com/questions/33299687/how-to-convert-dd-mm-yyyy-string-into-javascript-date-object
 
@@ -63,309 +66,299 @@ function Home() {
 
   // conciertos
 
-  var allConciertos = eventos.filter(obj => {
+  var activeConciertos = activeEvents.filter(obj => {
     return obj.categoriaId === 3
   })
 
-    // filtramos los conciertos que estén activos mediante la filtración de la propiedad fecha_inic del objeto del array
-
-  var activeConciertos = allConciertos.filter(({ fecha_inic }) => new Date(+(fecha_inic.split("/"))[2], (fecha_inic.split("/"))[1] - 1, +(fecha_inic.split("/"))[0]) > new Date());
-
   // otakus
 
-  var allOtakus = eventos.filter(obj => {
+  var activeOtakus = activeEvents.filter(obj => {
     return obj.categoriaId === 5
   })
 
-  var activeOtakus = allOtakus.filter(({ fecha_inic }) => new Date(+(fecha_inic.split("/"))[2], (fecha_inic.split("/"))[1] - 1, +(fecha_inic.split("/"))[0]) > new Date());
-
   // Gastronomía
 
-  var allGastro = eventos.filter(obj => {
+  var activeGastro = activeEvents.filter(obj => {
     return obj.categoriaId === 4
   })
 
-  var activeGastro = allGastro.filter(({ fecha_inic }) => new Date(+(fecha_inic.split("/"))[2], (fecha_inic.split("/"))[1] - 1, +(fecha_inic.split("/"))[0]) > new Date());
-
   // Gaming
 
-  var allGaming = eventos.filter(obj => {
+  var activeGaming = activeEvents.filter(obj => {
     return obj.categoriaId === 2
   })
 
-  var activeGaming = allGaming.filter(({ fecha_inic }) => new Date(+(fecha_inic.split("/"))[2], (fecha_inic.split("/"))[1] - 1, +(fecha_inic.split("/"))[0]) > new Date());
-
   // IT
 
-  var allIT = eventos.filter(obj => {
+  var activeIT = activeEvents.filter(obj => {
     return obj.categoriaId === 1
   })
 
-  var activeIT = allIT.filter(({ fecha_inic }) => new Date(+(fecha_inic.split("/"))[2], (fecha_inic.split("/"))[1] - 1, +(fecha_inic.split("/"))[0]) > new Date());
-
-
   return (
-   <>
+    <div className="dHomeBody container-fluid d-flex flex-column">
     <Menu/>
-    <FormularioLogin />
-    <Buscador/>
+      <div className="dHomeContent container-fluid">
 
-    {
-      (masHypeados.length  != 0) ? (
-        <>
+        <FormularioLogin />
 
-          <h1 className="titulo-eventos-home"><img  className="hype hype-on" height={50} src={fuego_activo} /> Los Más Hypeados   <img  className="hype hype-on" height={50} src={fuego_activo} /></h1>     
-    
-          <Swiper
-            initialSlide={0}
-            slidesPerView={1}
-            spaceBetween={30}
-            centeredSlidesBounds={true}
-            //loop={true}
-            //loopFillGroupWithBlank={true}
-            rewind={true} /* solo se puede loop o rewind, los 2 a la vez no */
-            autoplay={{
-              delay: 8000,
-              disableOnInteraction: false,
-            }}
-            pagination={{
-              clickable: true,
-              dynamicBullets: true
-            }}
-            allowTouchMove={false}
-            navigation={true}
-            modules={[Autoplay, Pagination, Navigation]}
-            className="hypeSwiper"
-          >
-            {
-              masHypeados.map((tupla) => {
-              
-                return (<SwiperSlide><Card listado="hype" titulo={tupla.evento} descripcion={tupla.descripcion} imagen={tupla.imagen} eventoId={tupla.eventoId} fecha={tupla.fecha_inic} precio={tupla.precio} localizacion={tupla.localizacion}/></SwiperSlide>)
-              })
-            }
-          </Swiper>
-        </>) : (<></>)
-    }
+        <Buscador />
 
-        
+        {
+          (masHypeados.length != 0) ? (
+            <>
 
-      {/* /////////////////////////////////////////////////////////////////////////////////////////// */}
-      {/* /////////////////////////////////////////////////////////////////////////////////////////// */}
+              <h1 className="titulo-eventos-home"><img className="hype hype-on" height={50} src={fuego_activo} /> Los Más Hypeados   <img className="hype hype-on" height={50} src={fuego_activo} /></h1>
 
-      {
-        (latestEvents.length  != 0) ? (
-          <>
-            <h1 className="titulo-eventos-home">Últimos eventos</h1>
+              <Swiper
+                initialSlide={0}
+                slidesPerView={1}
+                spaceBetween={30}
+                centeredSlidesBounds={true}
+                //loop={true}
+                //loopFillGroupWithBlank={true}
+                rewind={true} /* solo se puede loop o rewind, los 2 a la vez no */
+                autoplay={{
+                  delay: 8000,
+                  disableOnInteraction: false,
+                }}
+                pagination={{
+                  clickable: true,
+                  dynamicBullets: true
+                }}
+                allowTouchMove={false}
+                navigation={true}
+                modules={[Autoplay, Pagination, Navigation]}
+                className="hypeSwiper"
+              >
+                {
+                  masHypeados.map((tupla) => {
 
-            <Swiper
-              initialSlide={0}
-              centeredSlidesBounds={true}
-              breakpoints={{
-                640: {
-                  slidesPerView: 1,
-                  spaceBetween: 20,
-                },
-                1150: {
-                  slidesPerView: 2,
-                  spaceBetween: 40,
-                },
-              }}
-              rewind={true}
-              pagination={{
-                clickable: true,
-                dynamicBullets: true
-              }}
-              allowTouchMove={false}
-              navigation={true}
-              modules={[Autoplay, Pagination, Navigation]}
-              className="mySwiper"
-            >
-              {
-                latestEvents.map((tupla) => {
-                  
-                  return (<SwiperSlide><Card listado="ultimos" titulo={tupla.evento} descripcion={tupla.descripcion} imagen={tupla.imagen} eventoId={tupla.eventoId} fecha={tupla.fecha_inic} precio={tupla.precio} localizacion={tupla.localizacion} /></SwiperSlide>)
-                })
-              }
-            </Swiper>
-          </>
-        ) : (<></>)
-      }
+                    return (<SwiperSlide><Card listado="hype" titulo={tupla.evento} descripcion={tupla.descripcion} imagen={tupla.imagen} eventoId={tupla.eventoId} fecha={tupla.fecha_inic} precio={tupla.precio} localizacion={tupla.localizacion} /></SwiperSlide>)
+                  })
+                }
+              </Swiper>
+            </>) : (<></>)
+        }
 
-      {/* /////////////////////////////////////////////////////////////////////////////////////////// */}
-      {/* /////////////////////////////////////////////////////////////////////////////////////////// */}
 
-      {
-        (activeConciertos.length  != 0) ? (
-        <>
-          <h1 className="titulo-eventos-home">Conciertos</h1>
 
-            <Swiper
-              initialSlide={0}
-              centeredSlidesBounds={true}
-              breakpoints={{
-                640: {
-                  slidesPerView: 1,
-                  spaceBetween: 20,
-                },
-                1150: {
-                  slidesPerView: 2,
-                  spaceBetween: 40,
-                },
-              }}
-              rewind={true}
-              pagination={{
-                clickable: true,
-                dynamicBullets: true
-              }}
-              allowTouchMove={false}
-              navigation={true}
-              modules={[Autoplay, Pagination, Navigation]}
-              className="mySwiper"
-            >
-              {
-                activeConciertos.map((tupla) => {
-                  return (<SwiperSlide><Card listado="conciertos" titulo={tupla.evento} descripcion={tupla.descripcion} imagen={tupla.imagen} eventoId={tupla.eventoId} fecha={tupla.fecha_inic}  precio={tupla.precio} localizacion={tupla.localizacion}/></SwiperSlide>)
-                })
-              }
-            </Swiper>
-        </>
-        ) : (<></>)
+        {/* /////////////////////////////////////////////////////////////////////////////////////////// */}
+        {/* /////////////////////////////////////////////////////////////////////////////////////////// */}
 
-      }
+        {
+          (latestEvents.length != 0) ? (
+            <>
+              <h1 className="titulo-eventos-home">Últimos eventos</h1>
 
-      {/* /////////////////////////////////////////////////////////////////////////////////////////// */}
-      {/* /////////////////////////////////////////////////////////////////////////////////////////// */}
+              <Swiper
+                initialSlide={0}
+                centeredSlidesBounds={true}
+                breakpoints={{
+                  640: {
+                    slidesPerView: 1,
+                    spaceBetween: 20,
+                  },
+                  1150: {
+                    slidesPerView: 2,
+                    spaceBetween: 40,
+                  },
+                }}
+                rewind={true}
+                pagination={{
+                  clickable: true,
+                  dynamicBullets: true
+                }}
+                allowTouchMove={false}
+                navigation={true}
+                modules={[Autoplay, Pagination, Navigation]}
+                className="mySwiper"
+              >
+                {
+                  latestEvents.map((tupla) => {
 
-      {
-        (activeOtakus.length  != 0) ? (
-        <>
-          <h1 className="titulo-eventos-home">Para los otakus</h1>
+                    return (<SwiperSlide><Card listado="ultimos" titulo={tupla.evento} descripcion={tupla.descripcion} imagen={tupla.imagen} eventoId={tupla.eventoId} fecha={tupla.fecha_inic} precio={tupla.precio} localizacion={tupla.localizacion} /></SwiperSlide>)
+                  })
+                }
+              </Swiper>
+            </>
+          ) : (<></>)
+        }
 
-            <Swiper
-              initialSlide={0}
-              centeredSlidesBounds={true}
-              breakpoints={{
-                640: {
-                  slidesPerView: 1,
-                  spaceBetween: 20,
-                },
-                1150: {
-                  slidesPerView: 2,
-                  spaceBetween: 40,
-                },
-              }}
-              rewind={true}
-              pagination={{
-                clickable: true,
-                dynamicBullets: true
-              }}
-              allowTouchMove={false}
-              navigation={true}
-              modules={[Autoplay, Pagination, Navigation]}
-              className="mySwiper"
-            >
-              {
-                activeOtakus.map((tupla) => {
-                  return (<SwiperSlide><Card  listado="otaku"titulo={tupla.evento} descripcion={tupla.descripcion} imagen={tupla.imagen} eventoId={tupla.eventoId} fecha={tupla.fecha_inic}  precio={tupla.precio} localizacion={tupla.localizacion}/></SwiperSlide>)
-                })
-              }
-            </Swiper>
-        </>
-        ) : (<></>)
+        {/* /////////////////////////////////////////////////////////////////////////////////////////// */}
+        {/* /////////////////////////////////////////////////////////////////////////////////////////// */}
 
-      }
+        {
+          (activeConciertos.length != 0) ? (
+            <>
+              <h1 className="titulo-eventos-home">Conciertos</h1>
 
-      {/* /////////////////////////////////////////////////////////////////////////////////////////// */}
-      {/* /////////////////////////////////////////////////////////////////////////////////////////// */}
+              <Swiper
+                initialSlide={0}
+                centeredSlidesBounds={true}
+                breakpoints={{
+                  640: {
+                    slidesPerView: 1,
+                    spaceBetween: 20,
+                  },
+                  1150: {
+                    slidesPerView: 2,
+                    spaceBetween: 40,
+                  },
+                }}
+                rewind={true}
+                pagination={{
+                  clickable: true,
+                  dynamicBullets: true
+                }}
+                allowTouchMove={false}
+                navigation={true}
+                modules={[Autoplay, Pagination, Navigation]}
+                className="mySwiper"
+              >
+                {
+                  activeConciertos.map((tupla) => {
+                    return (<SwiperSlide><Card listado="conciertos" titulo={tupla.evento} descripcion={tupla.descripcion} imagen={tupla.imagen} eventoId={tupla.eventoId} fecha={tupla.fecha_inic} precio={tupla.precio} localizacion={tupla.localizacion} /></SwiperSlide>)
+                  })
+                }
+              </Swiper>
+            </>
+          ) : (<></>)
 
-      {
-        (activeGastro.length  != 0) ? (
-        <>
-          <h1 className="titulo-eventos-home">Gastronomía</h1>
+        }
 
-            <Swiper
-              initialSlide={0}
-              centeredSlidesBounds={true}
-              breakpoints={{
-                640: {
-                  slidesPerView: 1,
-                  spaceBetween: 20,
-                },
-                1150: {
-                  slidesPerView: 2,
-                  spaceBetween: 40,
-                },
-              }}
-              rewind={true}
-              pagination={{
-                clickable: true,
-                dynamicBullets: true
-              }}
-              allowTouchMove={false}
-              navigation={true}
-              modules={[Autoplay, Pagination, Navigation]}
-              className="mySwiper"
-            >
-              {
-                activeGastro.map((tupla) => {
-                  return (<SwiperSlide><Card listado="gastronomia" titulo={tupla.evento} descripcion={tupla.descripcion} imagen={tupla.imagen} eventoId={tupla.eventoId} fecha={tupla.fecha_inic}  precio={tupla.precio} localizacion={tupla.localizacion}/></SwiperSlide>)
-                })
-              }
-            </Swiper>
-        </>
-        ) : (<></>)
+        {/* /////////////////////////////////////////////////////////////////////////////////////////// */}
+        {/* /////////////////////////////////////////////////////////////////////////////////////////// */}
 
-      }
+        {
+          (activeOtakus.length != 0) ? (
+            <>
+              <h1 className="titulo-eventos-home">Para los otakus</h1>
 
-      {/* /////////////////////////////////////////////////////////////////////////////////////////// */}
-      {/* /////////////////////////////////////////////////////////////////////////////////////////// */}
+              <Swiper
+                initialSlide={0}
+                centeredSlidesBounds={true}
+                breakpoints={{
+                  640: {
+                    slidesPerView: 1,
+                    spaceBetween: 20,
+                  },
+                  1150: {
+                    slidesPerView: 2,
+                    spaceBetween: 40,
+                  },
+                }}
+                rewind={true}
+                pagination={{
+                  clickable: true,
+                  dynamicBullets: true
+                }}
+                allowTouchMove={false}
+                navigation={true}
+                modules={[Autoplay, Pagination, Navigation]}
+                className="mySwiper"
+              >
+                {
+                  activeOtakus.map((tupla) => {
+                    return (<SwiperSlide><Card listado="otaku" titulo={tupla.evento} descripcion={tupla.descripcion} imagen={tupla.imagen} eventoId={tupla.eventoId} fecha={tupla.fecha_inic} precio={tupla.precio} localizacion={tupla.localizacion} /></SwiperSlide>)
+                  })
+                }
+              </Swiper>
+            </>
+          ) : (<></>)
 
-      {
-        (activeGaming.length  != 0) ? (
-        <>
-          <h1 className="titulo-eventos-home">Gaming</h1>
+        }
 
-            <Swiper
-              initialSlide={0}
-              centeredSlidesBounds={true}
-              breakpoints={{
-                640: {
-                  slidesPerView: 1,
-                  spaceBetween: 20,
-                },
-                1150: {
-                  slidesPerView: 2,
-                  spaceBetween: 40,
-                },
-              }}
-              rewind={true}
-              pagination={{
-                clickable: true,
-                dynamicBullets: true
-              }}
-              allowTouchMove={false}
-              navigation={true}
-              modules={[Autoplay, Pagination, Navigation]}
-              className="mySwiper"
-            >
-              {
-                activeGaming.map((tupla) => {
-                  return (<SwiperSlide><Card listado="gaming" titulo={tupla.evento} descripcion={tupla.descripcion} imagen={tupla.imagen} eventoId={tupla.eventoId} fecha={tupla.fecha_inic}  precio={tupla.precio} localizacion={tupla.localizacion}/></SwiperSlide>)
-                })
-              }
-            </Swiper>
-        </>
-        ) : (<></>)
+        {/* /////////////////////////////////////////////////////////////////////////////////////////// */}
+        {/* /////////////////////////////////////////////////////////////////////////////////////////// */}
 
-      }
+        {
+          (activeGastro.length != 0) ? (
+            <>
+              <h1 className="titulo-eventos-home">Gastronomía</h1>
 
-      {/* /////////////////////////////////////////////////////////////////////////////////////////// */}
-      {/* /////////////////////////////////////////////////////////////////////////////////////////// */}
+              <Swiper
+                initialSlide={0}
+                centeredSlidesBounds={true}
+                breakpoints={{
+                  640: {
+                    slidesPerView: 1,
+                    spaceBetween: 20,
+                  },
+                  1150: {
+                    slidesPerView: 2,
+                    spaceBetween: 40,
+                  },
+                }}
+                rewind={true}
+                pagination={{
+                  clickable: true,
+                  dynamicBullets: true
+                }}
+                allowTouchMove={false}
+                navigation={true}
+                modules={[Autoplay, Pagination, Navigation]}
+                className="mySwiper"
+              >
+                {
+                  activeGastro.map((tupla) => {
+                    return (<SwiperSlide><Card listado="gastronomia" titulo={tupla.evento} descripcion={tupla.descripcion} imagen={tupla.imagen} eventoId={tupla.eventoId} fecha={tupla.fecha_inic} precio={tupla.precio} localizacion={tupla.localizacion} /></SwiperSlide>)
+                  })
+                }
+              </Swiper>
+            </>
+          ) : (<></>)
 
-      {
-        (activeIT.length  != 0) ? (
-          <>
-            <h1 className="titulo-eventos-home">IT</h1>
+        }
+
+        {/* /////////////////////////////////////////////////////////////////////////////////////////// */}
+        {/* /////////////////////////////////////////////////////////////////////////////////////////// */}
+
+        {
+          (activeGaming.length != 0) ? (
+            <>
+              <h1 className="titulo-eventos-home">Gaming</h1>
+
+              <Swiper
+                initialSlide={0}
+                centeredSlidesBounds={true}
+                breakpoints={{
+                  640: {
+                    slidesPerView: 1,
+                    spaceBetween: 20,
+                  },
+                  1150: {
+                    slidesPerView: 2,
+                    spaceBetween: 40,
+                  },
+                }}
+                rewind={true}
+                pagination={{
+                  clickable: true,
+                  dynamicBullets: true
+                }}
+                allowTouchMove={false}
+                navigation={true}
+                modules={[Autoplay, Pagination, Navigation]}
+                className="mySwiper"
+              >
+                {
+                  activeGaming.map((tupla) => {
+                    return (<SwiperSlide><Card listado="gaming" titulo={tupla.evento} descripcion={tupla.descripcion} imagen={tupla.imagen} eventoId={tupla.eventoId} fecha={tupla.fecha_inic} precio={tupla.precio} localizacion={tupla.localizacion} /></SwiperSlide>)
+                  })
+                }
+              </Swiper>
+            </>
+          ) : (<></>)
+
+        }
+
+        {/* /////////////////////////////////////////////////////////////////////////////////////////// */}
+        {/* /////////////////////////////////////////////////////////////////////////////////////////// */}
+
+        {
+          (activeIT.length != 0) ? (
+            <>
+              <h1 className="titulo-eventos-home">IT</h1>
 
               <Swiper
                 initialSlide={0}
@@ -392,17 +385,18 @@ function Home() {
               >
                 {
                   activeIT.map((tupla) => {
-                    return (<SwiperSlide><Card listado="it" titulo={tupla.evento} descripcion={tupla.descripcion} imagen={tupla.imagen} eventoId={tupla.eventoId} fecha={tupla.fecha_inic}  precio={tupla.precio} localizacion={tupla.localizacion}/></SwiperSlide>)
+                    return (<SwiperSlide><Card listado="it" titulo={tupla.evento} descripcion={tupla.descripcion} imagen={tupla.imagen} eventoId={tupla.eventoId} fecha={tupla.fecha_inic} precio={tupla.precio} localizacion={tupla.localizacion} /></SwiperSlide>)
                   })
                 }
               </Swiper>
-          </>
-        ) : (<></>)
+            </>
+          ) : (<></>)
 
-      }
-      <Footer/>
+        }
+      </div>
+    <Footer/>
  
-   </>
+   </div>
  
   );}
 

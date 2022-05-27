@@ -5,13 +5,14 @@
         margin-bottom: 30px
 
     .swiper-button-prev
-        height: 100%
-        padding-left: 20px
-        padding-right: 50px
+        height: fit-content
+        padding: 30px 50px 30px 50px
 
         margin-top: 0 !important
         margin-left: -10px
 
+        border-radius: 50%
+
         top: 50%
         transform: translateY(-50%)
 
@@ -19,20 +20,31 @@
 
         background-color: #000000a9
 
+        &:after
+            
+            left: 40%
+            transform: translateX(-20%)
+
     .swiper-button-next
-        height: 100%
-        padding-left: 50px
-        padding-right: 20px
+        height: fit-content
+        padding: 30px 50px 30px 50px
 
         margin-top: 0 !important
         margin-right: -10px
 
+        border-radius: 50%
+
         top: 50%
         transform: translateY(-50%)
 
         color: var(--swiper-navigation-color, white)
 
         background-color: #000000a9
+
+        &:after
+            
+            right: 40%
+            transform: translateX(20%)
 
     &.hypeSwiper
 

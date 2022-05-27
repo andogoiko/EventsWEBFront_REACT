@@ -26,7 +26,7 @@ function Buscador(){
   };
 
 return (
-    <div className="main">
+    <div className="dBuscador">
       <div className="search" id="tBuscador">
         <TextField
           id="outlined-basic"
